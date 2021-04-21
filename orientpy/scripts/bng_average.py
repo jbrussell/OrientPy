@@ -215,6 +215,12 @@ def main(args=None):
         print("|    B-N-G mean, error, data included: " +
               "{0:.1f}, {1:.1f}, {2}".format(val, err, np.sum(ind)))
         print()
+        
+        # Save results to text file
+        ofile = open(indir / 'orientation.txt', 'w')
+        ofile.write("%10s %10s %10s %10s \n" % ('sta', 'phi', 'err', 'num'));
+        ofile.write("%10s %10f %10f %10d \n" % (sta.station, val, err, np.sum(ind)))
+        ofile.close()
 
         if np.sum(np.isnan(np.array([val, err])))>0:
             continue

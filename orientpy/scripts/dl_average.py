@@ -176,6 +176,12 @@ def main(args=None):
               "{0:.2f}, {1:.2f}, {2}".format(val, err, np.sum(ind)))
         print("|    D-L CC level: {0:.1f}".format(args.cc))
         print()
+        
+        # Save results to text file
+        ofile = open(indir / 'orientation.txt', 'w')
+        ofile.write("%10s %10s %10s %10s \n" % ('sta', 'phi', 'err', 'num'));
+        ofile.write("%10s %10f %10f %10d \n" % (sta.station, val, err, np.sum(ind)))
+        ofile.close()
 
         if np.sum(np.isnan(np.array([val, err])))>0:
             continue
