@@ -14,3 +14,8 @@ build
 dist
 
 _build
+
+*.pkl
+*.txt
+*.png
+*.csv
