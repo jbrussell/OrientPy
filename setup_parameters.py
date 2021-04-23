@@ -1,11 +1,12 @@
 path2envbin = '/Users/russell/anaconda/envs/orient/bin/' # Set path to your environment executables
 
 webservice = "IRIS"
-network = "2A" # YO ENAM
+network = "ZA" # NoMelt
 compstr = "BH?"
 
-tstart = "2005-01-05T00:00:00"
-tend = "2007-12-14T00:00:00"
+# Start and end time to search for station list
+tstart = "2011-12-08T00:00:00"
+tend = "2012-12-09T00:00:00"
 
 minmagnitude = 7.0 #6.5; 7.0; # Lower magnitude cutoff for event search    
 search_dir = './' + webservice + '_' + network + '_' + str(minmagnitude) + '/' # OUTPUT PATH
