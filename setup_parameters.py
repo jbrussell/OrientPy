@@ -4,6 +4,9 @@ webservice = "IRIS"
 network = "2A" # YO ENAM
 compstr = "BH?"
 
+tstart = "2005-01-05T00:00:00"
+tend = "2007-12-14T00:00:00"
+
 minmagnitude = 7.0 #6.5; 7.0; # Lower magnitude cutoff for event search    
 search_dir = './' + webservice + '_' + network + '_' + str(minmagnitude) + '/' # OUTPUT PATH
 

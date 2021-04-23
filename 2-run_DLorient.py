@@ -6,6 +6,7 @@ from setup_parameters import *
 import matplotlib.pyplot as plt
 import obspy
 from obspy.clients.fdsn import Client
+from obspy import UTCDateTime
 import numpy as np
 import os
 from pathlib import Path
@@ -22,7 +23,9 @@ print(client)
 
 # %% codecell
 # LOAD STATIONS
-inventory = client.get_stations(network=network, station=stations, channel=compstr)
+t1 = UTCDateTime(tstart)
+t2 = UTCDateTime(tend)
+inventory = client.get_stations(network=network, station=stations, channel=compstr, starttime=t1, endtime=t2)
 print(inventory)
 file = open(DL_out+'stations.txt', 'w')
 for ista in range(0,len(inventory[0])) :
