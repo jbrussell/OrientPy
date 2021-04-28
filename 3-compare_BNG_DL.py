@@ -10,6 +10,7 @@ import numpy as np
 import os
 from pathlib import Path
 import pandas as pd
+from scipy.stats import pearsonr
 %matplotlib inline
 
 # %% codecell
@@ -30,6 +31,10 @@ ax.errorbar(ori_bng.phi+360,ori_dl.phi,yerr=ori_dl.err,xerr=ori_bng.err,fmt='o',
 ax.errorbar(ori_bng.phi-360,ori_dl.phi,yerr=ori_dl.err,xerr=ori_bng.err,fmt='o',color='tab:blue')
 ax.errorbar(ori_bng.phi,ori_dl.phi+360,yerr=ori_dl.err,xerr=ori_bng.err,fmt='o',color='tab:blue')
 ax.errorbar(ori_bng.phi,ori_dl.phi-360,yerr=ori_dl.err,xerr=ori_bng.err,fmt='o',color='tab:blue')
+# correlation coefficient
+good = ~np.logical_or(np.isnan(ori_bng.phi), np.isnan(ori_dl.phi))
+R,_ = pearsonr(ori_bng.phi[good],ori_dl.phi[good])
+ax.set_title('R = %.3f'%(R))
 for ii,sta in enumerate(ori_dl.sta):
     ax.text(ori_bng.phi[ii],ori_dl.phi[ii],str(sta),ha='right',va='bottom')
 xlim = [0,360]
